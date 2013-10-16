@@ -1,4 +1,4 @@
-require_relative './environment.rb'
+require_relative '../environment.rb'
 
 api = ApiCaller.new
 api.call

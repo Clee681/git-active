@@ -1,5 +1,7 @@
 require 'octokit'
+require 'sqlite3'
 require 'pry'
+require_relative './lib/models/database'
+require_relative './lib/models/user'
 require_relative './lib/models/event'
 require_relative './lib/models/api_caller'
-require_relative './lib/models/user'
