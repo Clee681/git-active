@@ -13,27 +13,30 @@ class ApiCaller
     while true
       api_results = self.client.organization_events('flatiron-school')
 
-      events_to_add = api_results.collect do |element|
-        if element.attrs[:created_at] > self.time #&& element.attrs[:type] == "PushEvent"
-          temp = Event.new.tap do |event|
-            name_from_event = element.attrs[:actor].attrs[:login]
+      api_results.each do |api_hash|
+
+        if api_hash.attrs[:created_at] > self.time #&& api_hash.attrs[:type] == "PushEvent"
+          Event.new.tap do |event|
+            name_from_event = api_hash.attrs[:actor].attrs[:login]
             user_name = User.find(name_from_event) || User.new(name_from_event)
             
             event.name   = user_name.name.to_s
-            event.repo   = element.attrs[:repo].attrs[:name]
-            event.type   = element.attrs[:type]
-            event.time   = element.attrs[:created_at].to_s
-            puts "#{element.attrs[:actor].attrs[:login]} at #{element.attrs[:created_at]}"
-          end
-          temp.insert
+            event.repo   = api_hash.attrs[:repo].attrs[:name]
+            event.type   = api_hash.attrs[:type]
+            event.time   = api_hash.attrs[:created_at].to_s
+            puts "#{api_hash.attrs[:actor].attrs[:login]} at #{api_hash.attrs[:created_at]}"
+
+          end.insert
         end
+
       end
 
       self.time    = Time.now.utc
-      recent_three = Event.build_from_db
-      puts recent_three[0].name
-      puts recent_three[1].name
-      puts recent_three[2].name
+      # recent_three = Event.build_from_db
+      # # puts recent_three[0].name
+      # # puts recent_three[1].name
+      # # puts recent_three[2].name
+      puts "Monitoring..."
       sleep 120
     end
   end
