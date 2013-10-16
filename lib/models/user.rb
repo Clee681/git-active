@@ -10,10 +10,10 @@ class User
   #               avatar TEXT);"
   #             )
 
-  def initialize(name, avatar)
+  def initialize(name)
     @@users << self
     self.name   = name
-    self.avatar = avatar
+    # self.avatar = avatar
   end
 
   def self.all

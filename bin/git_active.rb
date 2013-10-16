@@ -1,8 +1,4 @@
-require 'octokit'
-require 'pry'
-require_relative './event'
-require_relative './api_caller'
-require_relative './user'
+require_relative './environment.rb'
 
 api = ApiCaller.new
 api.call
