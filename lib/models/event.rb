@@ -15,8 +15,22 @@ class Event
     Database.db.execute(sql, self.name, self.repo, self.type, self.time)
   end
 
-  def build_from_db
-    
+  def self.build_from_db
+    sql = "SELECT * FROM events ORDER BY time DESC LIMIT 3;"
+    results = Database.db.execute(sql)
+
+    output = []
+    results.each do |row|
+      row.tap do |e|
+        e      = Event.new
+        e.name = row[1]
+        e.repo = row[2]
+        e.type = row[3]
+        e.time = row[4]
+        output << e
+      end
+    end
+    output
   end
 
   def initialize

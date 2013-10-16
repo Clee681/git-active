@@ -2,8 +2,8 @@ class ApiCaller
   attr_accessor :time, :client
 
   def initialize
-    # self.time = Time.now.utc
-    self.time = Time.utc(2013,10,12,21,40,00) # arbitrary time for testing purposes
+    self.time = Time.now.utc
+    # self.time = Time.utc(2013,10,12,21,40,00)
     self.client = Octokit::Client.new :netrc => true
   end
 
@@ -13,7 +13,6 @@ class ApiCaller
     while true
       api_results = self.client.organization_events('flatiron-school')
 
-      # what gets added dependent on time created
       events_to_add = api_results.collect do |element|
         if element.attrs[:created_at] > self.time #&& element.attrs[:type] == "PushEvent"
           temp = Event.new.tap do |event|
@@ -30,9 +29,12 @@ class ApiCaller
         end
       end
 
-      self.time = Time.now.utc
-      # binding.pry
-      sleep 30
+      self.time    = Time.now.utc
+      recent_three = Event.build_from_db
+      puts recent_three[0].name
+      puts recent_three[1].name
+      puts recent_three[2].name
+      sleep 120
     end
   end
 end
