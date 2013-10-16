@@ -7,7 +7,7 @@ class Event
                 name TEXT,
                 repo TEXT,
                 type TEXT,
-                time TEXT);"
+                time DATETIME);"
               )
 
   def insert
