@@ -19,4 +19,8 @@ class User
   def self.all
     @@users
   end
+
+  def self.find(name)
+    self.all.select { |u| u.name == name  }.first
+  end
 end

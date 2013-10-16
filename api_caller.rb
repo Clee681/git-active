@@ -17,13 +17,9 @@ class ApiCaller
       events_to_add = api_results.collect do |element|
         if element.attrs[:created_at] > self.time #&& element.attrs[:type] == "PushEvent"
           Event.new.tap do |event|
-            user_match = User.all.select { |u| u.name == element.attrs[:actor].attrs[:login] }
 
-            if user_match.empty?
-              event.name = User.new(element.attrs[:actor].attrs[:login], element.attrs[:actor].attrs[:gravatar_id])
-            else
-              event.name = user_match.first
-            end
+            name_from_event = element.attrs[:actor].attrs[:login]
+            user_name = User.find(name_from_event) || User.new(name_from_event)
             
             event.repo   = element.attrs[:repo].attrs[:name]
             event.type   = element.attrs[:type]
