@@ -11,7 +11,7 @@ class ApiCaller
     
     while true
       self.client.login
-      
+
       api_results = self.client.organization_events('flatiron-school')
       api_results.each do |api_hash|
 
@@ -36,6 +36,7 @@ class ApiCaller
 
       self.time    = Time.now.utc
       puts "Monitoring... #{Time.now.hour}:#{Time.now.min}"
+      Generator.build_site
       sleep 120
     end
   end
