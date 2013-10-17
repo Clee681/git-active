@@ -10,6 +10,11 @@ class Generator
     result = Database.db.execute(sql).flatten
   end
 
+  def self.convert_utc_to_local(time_string)
+    time = Time.parse(time_string).getlocal
+    "#{self.parse_hours(time.hour)}:#{self.parse_min_sec(time.min)}:#{self.parse_min_sec(time.sec)}"
+  end
+
   def self.parse_hours(time)
     if time > 12
       time - 12
@@ -20,9 +25,12 @@ class Generator
     end
   end
 
-  def self.convert_utc_to_local(time_string)
-    time = Time.parse(time_string).getlocal
-    "#{parse_hours(time.hour)}:#{time.min}:#{time.min}"
+
+  def self.parse_min_sec(time)
+    if time < 10
+      time = "0" + time.to_s
+    end
+    time
   end
 
   def self.build_site
