@@ -14,8 +14,8 @@ class ApiCaller
       
       begin
       api_results = self.client.organization_events('flatiron-school')
-      rescue Octokit::BadGateway
-        puts "Github 502 Error"
+      rescue
+        puts "Oops, there was an error :("
         api_results = []
       end
       api_results.each do |api_hash|
