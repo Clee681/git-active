@@ -8,11 +8,16 @@ class Generator
   def self.get_top_scorer
     sql = "SELECT name,count(*) FROM events GROUP BY name ORDER BY count(name) DESC LIMIT 1;"
     result = Database.db.execute(sql).flatten
-    result
   end
 
   def self.parse_hours(time)
-    time > 12 ? (time - 12) : time
+    if time > 12
+      time - 12
+    elsif time < 10
+      time[1]
+    else
+      time
+    end
   end
 
   def self.convert_utc_to_local(time_string)

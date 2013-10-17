@@ -8,9 +8,10 @@ class ApiCaller
   end
 
   def call
-    self.client.login
     
     while true
+      self.client.login
+      
       api_results = self.client.organization_events('flatiron-school')
       api_results.each do |api_hash|
 
@@ -38,5 +39,5 @@ class ApiCaller
       sleep 120
     end
   end
-  
+
 end

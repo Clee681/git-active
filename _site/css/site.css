@@ -2,18 +2,89 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Helvetica","Ariel",sans-serif;
+  font-family: "Lato","Helvetica","Ariel",sans-serif;
+  background-color: #2D3E52;
 }
 
-body {
-  margin: 2em;
+.header, .container {
+  padding: 2em;
+}
+.container {
+  position: relative;
+  color: white;
+  height: 100%;
+}
+
+.trophy-box-new {
+  position: absolute;
+  right: 3em;
+  top: 2em;
+  border: 2px solid #f1c40f;;
+  text-align: center;
+}
+
+.trophy-header-new {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  text-transform: uppercase;
+  background-color: #f1c40f; 
+  color:black;
+}
+
+.trophy-header-new p {
+  background-color: inherit;
+}
+
+.trophy-wrapper {
+  padding: 1.5em;
+  color: #f1c40f;
+}
+.top-scorer-name-new {
+  font-size: 2.5em;
+}
+
+.top-scorer-points-new {
+  font-size: 1.5em;
+}
+
+.header {
+  padding-bottom: 1em;
+  color: black;
+}
+
+.header, .flatiron-logo {
+  background-color: #ecf0f1;
 }
 
 .username {
-  font-size: 5em;
-  margin-bottom: .1em;
+  font-size: 8em;
+}
+
+.timestamp {
+  margin-left: 0.25em;
+  color: #C0C0C0;
 }
 
 .event-description {
-  margin-bottom: 4em;
+  font-size: 2em;
+  margin-bottom: 2.5em;
+}
+
+.flatiron-logo, .gitactive {
+  float: left;
+}
+
+.flatiron-logo {
+  padding-bottom: .5em;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table; 
+}
+
+.cf:after {
+    clear: both;
 }

@@ -6,25 +6,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Flatiron School Git Active</title>
         <link rel="stylesheet" href="css/site.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic' rel='stylesheet' type='text/css'>
+        <link href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
         <link rel="author" href="humans.txt">
     </head>
     <body>
 
-    <div class="flatiron-image">
-      <img src="img/flatiron.png"/>
+    <div class="header cf">
+      <img src="img/flatiron.png" class="flatiron-logo" />
     </div>
 
-    <p>The three most recent events from Flatiron Students on GitHub</p>
+    <div class="container">
+    <div class="trophy-box-new">
+      <div class="trophy-header-new"><p>Current Points Leader</p></div>
+      <div class="trophy-wrapper">
+        <i class="icon-trophy icon-4x"></i>
+        <p class="top-scorer-name-new"><%= scorer[0] %></p>
+        <p class="top-scorer-points-new"><%= scorer[1] %> events</p>   
+      </div>
+    </div>
 
     <% events.each do |event| %>
-    <h1 class="username"><%= event.name %></h1>
-    <h3 class="event-description"><%= event.type %> on <strong><%= event.repo %></strong> at <%= Generator.convert_utc_to_local(event.time) %>
+    <h1 class="username"><%= event.name %> <span class="timestamp"><%= Generator.convert_utc_to_local(event.time) %></span></h1>
+    <p class="event-description"><%= event.type %> on <%= event.repo %></p>
     <% end %>
-
-    <h1>The person with the most commits since we started monitoring on 10/16</h1>
-    <h2><%= scorer[0] %> with <%= scorer[1] %> events</h2>
-        
         <script src="js/site.js"></script>
+    </div>
     </body>
 </html>
 
