@@ -11,8 +11,13 @@ class ApiCaller
     
     while true
       self.client.login
-
+      
+      begin
       api_results = self.client.organization_events('flatiron-school')
+      rescue Octokit::BadGateway
+        puts "Github 502 Error"
+        api_results = []
+      end
       api_results.each do |api_hash|
 
         if api_hash.attrs[:created_at] > self.time
@@ -20,7 +25,7 @@ class ApiCaller
           event_to_insert = Event.new.tap do |event|
 
                 name_from_event = api_hash.attrs[:actor].attrs[:login]
-                user_name = User.find(name_from_event) || User.new(name_from_event)
+                user_name       = User.find(name_from_event) || User.new(name_from_event)
                 
                 event.name   = user_name.name.to_s
                 event.repo   = api_hash.attrs[:repo].attrs[:name]
