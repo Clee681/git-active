@@ -43,7 +43,7 @@ class ApiCaller
       self.time    = Time.now.utc
       puts "Monitoring... #{Time.now.hour}:#{Time.now.min}"
       Generator.build_site
-      sleep 120
+      sleep 80
     end
   end
 
