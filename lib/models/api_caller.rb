@@ -15,7 +15,7 @@ class ApiCaller
       api_results = self.client.organization_events('flatiron-school')
       api_results.each do |api_hash|
 
-        if api_hash.attrs[:created_at] > self.time && api_hash.attrs[:actors].attrs[:login] != "flatiron-school"
+        if api_hash.attrs[:created_at] > self.time
           
           event_to_insert = Event.new.tap do |event|
 
