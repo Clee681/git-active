@@ -1,6 +1,8 @@
 require 'octokit'
 require 'sqlite3'
 require 'pry'
+require 'erb'
+require 'Time'
 require_relative './lib/models/database'
 require_relative './lib/models/user'
 require_relative './lib/models/event'
