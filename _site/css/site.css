@@ -15,15 +15,15 @@
   height: 100%;
 }
 
-.trophy-box-new {
+.trophy-box {
   position: absolute;
   right: 3em;
   top: 2em;
-  border: 2px solid #f1c40f;;
+  border: 2px solid #f1c40f;
   text-align: center;
 }
 
-.trophy-header-new {
+.trophy-header {
   width: 100%;
   height: 100%;
   padding: 1em;
@@ -32,7 +32,7 @@
   color:black;
 }
 
-.trophy-header-new p {
+.trophy-header p {
   background-color: inherit;
 }
 
@@ -40,11 +40,11 @@
   padding: 1.5em;
   color: #f1c40f;
 }
-.top-scorer-name-new {
+.top-scorer-name {
   font-size: 2.5em;
 }
 
-.top-scorer-points-new {
+.top-scorer-points {
   font-size: 1.5em;
 }
 
@@ -71,20 +71,6 @@
   margin-bottom: 2.5em;
 }
 
-.flatiron-logo, .gitactive {
-  float: left;
-}
-
 .flatiron-logo {
   padding-bottom: .5em;
-}
-
-.cf:before,
-.cf:after {
-    content: " ";
-    display: table; 
-}
-
-.cf:after {
-    clear: both;
 }
