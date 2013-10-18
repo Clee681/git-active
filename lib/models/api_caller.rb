@@ -3,7 +3,7 @@ class ApiCaller
 
   def initialize
     self.time = Time.now.utc
-    # self.time = Time.utc(2013,10,12,21,40,00)
+    #self.time = Time.utc(2013,10,12,21,40,00)
     self.client = Octokit::Client.new :netrc => true
   end
 
@@ -20,7 +20,7 @@ class ApiCaller
       end
       api_results.each do |api_hash|
 
-        if api_hash.attrs[:created_at] > self.time
+        if api_hash.attrs[:created_at] > self.time && api_hash.attrs[:type] != "TeamAddEvent"
           
           event_to_insert = Event.new.tap do |event|
 
